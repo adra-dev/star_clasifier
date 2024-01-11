@@ -42,63 +42,6 @@ st.markdown('''
     online data base and download it in csv.
 
     ![query](star_clasifier\images\query.png)
-    ![result](star_clasifier\images\result.png)
+    ![result]("star_clasifier\images\result.png")
 
 ''')
-
-st.markdown('''
-    # Star Classifier Report
-    
-    Welcome throughout this repot I will summarize the proces of
-    my Star Classifier proyect.
-
-''')
-
-
-x = np.linspace(0, 50, 51)
-y = x + 15 * np.random.randn(len(x))
-st.write(y)
-
-fig = go.Figure()
-
-fig.add_trace(
-    go.Scatter(x=x, y=y, mode='markers')
-)
-
-st.plotly_chart(fig)
-
-st.markdown('''
-    ## Modelado de datos
-    En los datos se observa un comportamiento lineal,
-    por lo que se realiza un ajuste de una linea recta 
-    con una regresion lineal simple.
-    
-    $$y = m*x + b$$
-    
-''')
-
-model = tf.keras.Sequential()
-model.add(tf.keras.layers.Dense(1, input_shape=(1,)))
-model.compile(optimizer=tf.keras.optimizers.Adam(0.1), loss='mse')
-
-history = model.fit(x, y, epochs=2000, verbose=0)
-
-st.write('Perdida final:', history.history['loss'][-1])
-
-x_loss = np.linspace(1, len(history.history['loss']),
-                     len(history.history['loss']))
-y_loss = history.history['loss']
-
-
-fig = plt.figure()
-plt.plot(x_loss, y_loss)
-st.pyplot(fig)
-
-y_pred = model.predict(x)
-y_pred = y_pred.reshape(-1)
-#st.write('Prediccion:', y_pred)
-
-fig_2 = go.Figure()
-fig_2.add_trace(go.Scatter(x=x, y=y, mode='markers'))
-fig_2.add_trace(go.Scatter(x=x, y=y_pred, mode='lines'))
-st.plotly_chart(fig_2)
