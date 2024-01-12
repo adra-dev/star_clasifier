@@ -15,4 +15,4 @@ First we need define the project, since we already have information about the ob
     - Why are you setting the goal that you’re setting?
         - For using the right model to achive the right clasification system.
 5. Time-Bound
-    - 22 days from 23/october/2023 to 14/november/2023
+    - 22 days from 23/october/2023 to 11/January/2024
